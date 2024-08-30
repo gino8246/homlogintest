@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -54,7 +52,7 @@ pageEncoding="UTF-8"%>
 
             // 設定表單 action 包含 rechatid 作為 query string
             const form = document.getElementById('postForm');
-            form.action = 'http://localhost:8080/Webhook/?chatId=' + rechatid;
+            form.action = 'https://webchat-uat.homeplus.net.tw/Webhook/?chatId=' + rechatid;
 
             // 提交隱藏的表單
             form.submit();
