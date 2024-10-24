@@ -26,7 +26,7 @@
 	<body>
 	    <h1>模擬登入畫面</h1>
 	    <label for="webhook-url">Webhook URL(可編輯):</label>
-    	<input type="text" id="webhook-url" name="webhook-url" value="https://webchat-uat.homeplus.net.tw/Webhook/"><br><br>
+    	<input type="text" id="webhook-url" name="webhook-url" value="http://localhost:8080/Webhook/"><br><br>
 	    
 	
 	    <!-- 表單讓使用者輸入 rechatid 和 authcode -->
@@ -41,6 +41,7 @@
 	    <!-- 隱藏的表單 -->
 	    <form id="postForm" action="http://localhost:8080/Webhook/" method="POST" target="_blank" style="display: none;">
 	        <input type="hidden" id="authcodeField" name="authcode" value="">
+			<input type="hidden" id="chatIdField" name="chatId" value="">
 	    </form>
 	
 	    <script>
@@ -51,11 +52,12 @@
 	            const authcode = document.getElementById('authcode').value;
 	
 	            // 設定隱藏表單中的 authcode 值
-	            document.getElementById('authcodeField').value = authcode;
-	
-	            // 設定表單 action 包含 rechatid 作為 query string
-	            const form = document.getElementById('postForm');
-	            form.action = webhookUrl + '?chatId=' + encodeURIComponent(rechatid);
+				document.getElementById('authcodeField').value = authcode;
+				document.getElementById('chatIdField').value = rechatid;
+
+				// 設定表單 action 包含 rechatid 作為 query string
+				const form = document.getElementById('postForm');
+				form.action = webhookUrl ;
 	
 	            // 提交隱藏的表單
 	            form.submit();
